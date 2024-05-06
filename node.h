@@ -6,37 +6,60 @@
 
 #include <iostream>
 
-#include "console.h"
 #include "crypto.h"
 #include "ledger.h"
 
-typedef unsigned long long ulongx;
-typedef unsigned long long int ulint;
+typedef unsigned long int ulint;
 
-class Node {
+class Block {
 public:
-  Node();
+  Block();
 private:
-  struct Block {
+  struct Node {
     // Block Height
-    ulongx block_height = 0;
-    // Nonce Value
-    ulint nonce = 0;
+    ulint block_height = 0;
+    // Block Hash
+    std::string hash = "";
     // Previous Block Hash
-    std::string prev_hash = "";
-    // Node Data
+    std::string prev_hash = prev_node->hash;
+    // TODO Node Data
+
+    // Previous Node
+    Node *prev_node = nullptr;
     // Next node
-    Node* next_node = nullptr;
+    Node *next_node = nullptr;
   };
   // Head Node
-  Node* head_node;
+  Node *head_node = nullptr;
+  // Tail Node
+  Node *tail_node = nullptr;
 };
 
 // Constructor
-Node::Node()
+Block::Block()
 {
   // Node Pointer Initialization
-  head_node = nullptr;
+  Node *node = tail_node;
+  head_node = node;
+  tail_node = nullptr;
+
+  // Node Hash Initialization
+  head_node->hash = "0000000000000000000000000000000000000000000000000000000000000000";
+  head_node->prev_hash = "0000000000000000000000000000000000000000000000000000000000000000";
+
+  tail_node->hash = "0000000000000000000000000000000000000000000000000000000000000000";
+  tail_node->prev_hash = "0000000000000000000000000000000000000000000000000000000000000000";
+
+  // TODO current node hash from crypto hash method
+
+  // TODO node data
+
+  // Block Height Initialization
+  node->block_height = 1;
+
+  // Node Link Initialization
+  head_node->prev_node = head_node;
+  tail_node->prev_node = node;
 }
 
 #endif
