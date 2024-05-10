@@ -178,59 +178,156 @@ std::string Crypto::Encapsulate(
   std::stringstream ss;
 
   ss
+  << "First Name: "
   << first_name
+  << std::endl
+  << "Last Name: "
+  << std::endl
   << last_name
+  << "Sex: "
   << sex
+  << std::endl
+  << "Personal Health Number: "
   << PHN
+  << std::endl
+  << "Phone Number: "
   << phone_no
+  << std::endl
+  << "Hospital/Facility: "
   << hospital
+  << std::endl
+  << "Patient Identifier: "
   << patient_id
+  << std::endl
+  << "Birthdate: "
   << month
+  << "/"
   << day
+  << "/"
   << year
+  << std::endl
+  << "Address: "
   << city
+  << ", "
   << province
+  << ", "
   << country
+  << ", "
   << postal_code
+  << std::endl
+  << "Cancer Type: "
   << cancer_type
+  << std::endl
+  << "Cancer Site: "
   << cancer_site
+  << std::endl
+  << "Cancer Status: "
   << malignant
+  << std::endl
+  << "Carcinogen: "
   << carcinogen
+  << std::endl
+  << "Mitotic Index: "
   << mitotic_index
+  << std::endl
+  << "Ki-67 Index: "
   << ki67_index
+  << std::endl
+  << "Cancer Grade: "
   << grade
+  << std::endl
+  << "Additional Information: "
   << info
+  << std::endl
+  << "Primary Tumour: "
   << T
+  << std::endl
+  << "Regional Lymph Nodes: "
   << N
+  << std::endl
+  << "Distant Metastasis: "
   << M
+  << std::endl
+  << "Life Viability Rate: "
   << rate
+  << std::endl
+  << "Lifespan Expectancy: "
   << lifespan
+  << std::endl
+  << "Biomarker"
   << biomarker
+  << std::endl
+  << "Biomarker Test: "
   << biomarker_test
+  << std::endl
+  << "Biopsy: "
   << biopsy
+  << std::endl
+  << "Computerized Tomography Scan Result: "
   << CT
+  << std::endl
+  << "Magnetic Resonance Imaging Result: "
   << MRI
+  << std::endl
+  << "Positron Emission Tomography Imaging Result: "
   << PET
+  << std::endl
+  << "Ultrasound Imaging Result: "
   << US
+  << std::endl
+  << "X-Ray Imaging Result: "
   << XRAY
+  << std::endl
+  << "Chemotherapy Report: "
   << chemotherapy
+  << std::endl
+  << "Radiation Therapy Report: "
   << radiation
+  << std::endl
+  << "Immunotherapy Report: "
   << immunotherapy
+  << std::endl
+  << "Hormone Therapy Report: "
   << hormone_therapy
+  << std::endl
+  << "Stem Cell Transplant Report: "
   << stem_cell_transplant
+  << std::endl
+  << "Surgery Report: "
   << surgery
+  << std::endl
+  << "Additional Treatment: "
   << treatment
+  << std::endl
+  << "Treatment Report Notes: "
   << treatment_report
+  << std::endl
+  << "Gene Name: "
   << gene_name
+  << std::endl
+  << "Gene Symbol: "
   << gene_symbol
+  << std::endl
+  << "Gene Description: "
   << gene_info
+  << std::endl
+  << "Gene Type: "
   << gene_type
+  << std::endl
+  << "Gene Length: "
   << gene_length
+  << std::endl
+  << "Starting Nucleotide: "
   << start_nt
+  << std::endl
+  << "Ending Nucleotide: "
   << end_nt
+  << std::endl
+  << "Cytogenetic Coordinates: "
   << chromosome_num
   << chromosome_arm
   << chromosome_region
+  << std::endl
   ;
 
   ss >> message;

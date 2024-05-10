@@ -50,6 +50,9 @@ int main()
   // Cryptographic Testing
   Crypto crypto;
 
+  patient.first_name = "Shane";
+  patient.last_name = "So";
+
   std::string s = crypto.Encapsulate(
     patient.first_name,
     patient.last_name,
@@ -106,11 +109,10 @@ int main()
     locus.chromosome_region
   );
 
-  // std::string hash = crypto.Hash(s);
-  // std::cout << hash << std::endl;
+  std::cout << s << std::endl;
 
   // Node Testing
-  Block node;
+  // Block node;
 
 
 
