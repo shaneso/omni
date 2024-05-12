@@ -7,42 +7,57 @@
 #include <iostream>
 
 #include "crypto.h"
-#include "ledger.h"
 
 typedef unsigned long int ulint;
 
-class Block {
+class Node {
 public:
-  // Block Constructor
-  Block();
-  // Block Node Creation Function
+  // Constructor
+  Node();
+  // Node Insertion
+  void InsertNode(std::string data);
+  // Nodechain Console Output
+  void OutputNode();
 private:
-  struct Node {
-    // Block Height
-    ulint block_height = 0;
-    // Block Hash
-    std::string *hash;
-    // Node Block Comment
-    std::string comment = "";
-    // Next node
-    Node *next_node = nullptr;
-    // Node Data
+  struct
+  {
+    std::string data = "";
+    Node* next_node = nullptr;
   };
-  // Head Node
-  Node *head_node = nullptr;
+  Node* genesis_node;
 };
 
 // Constructor
-Block::Block()
+Node::Node()
 {
-  // Genesis Block Node Initialization
-  Node *genesis = nullptr;
-  // Head Node Pointer Initialization
-  head_node = genesis;
-  // Genesis Block Hash
-  *genesis->hash = "0x3f9be4259bea0221f4665544861a5c2595c0fe0fb1c5867b069cabf2683bd1c6";
-  // Node Block Comment
-  genesis->comment = "Genesis Node Block";
+  genesis_node = nullptr;
+}
+
+void Node::InsertNode(std::string data)
+{
+  Node* new_node = new Node;
+  new_node->data = data;
+  if (genesis_node == NULL)
+  {
+    genesis_node = new_node;
+    return;
+  }
+  Node* tmp_node = genesis_node;
+  while (tmp_node->next_node != NULL)
+  {
+    tmp_node = tmp_node->next_node;
+  }
+  tmp_node->next_node = new_node;
+}
+
+void Node::OutputNode()
+{
+  Node* tmp_node = genesis_node;
+  while (tmp_node->next_node != NULL)
+  {
+    std::cout << tmp_node->data << std::endl << std::endl;
+    tmp_node = tmp_node->next_node;
+  }
 }
 
 #endif

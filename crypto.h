@@ -21,7 +21,8 @@ public:
   Crypto();
 
   // Message Encapsulation Function
-  std::string Encapsulate(
+  std::string Encapsulate
+  (
     std::string first_name,
     std::string last_name,
     char sex,
@@ -105,8 +106,32 @@ Crypto::Crypto()
   ;
 }
 
+///////////////////////
+//
+// Data Hash Encryption
+//
+
+std::string Crypto::Hash(std::string data)
+{
+  //////////////////////////
+  // SHA3-256 Hash Algorithm
+
+  SHA3 sha3;
+
+  data = sha3(data);
+  data = sha3(data);
+  data = sha3(data);
+
+  // Hash Hex Signature Prefix
+  data.insert(0, 1, 'x');
+  data.insert(0, 1, '0');
+
+  return data;
+}
+
 // Message Encapsulation Function
-std::string Crypto::Encapsulate(
+std::string Crypto::Encapsulate
+(
   std::string first_name,
   std::string last_name,
   char sex,
@@ -171,19 +196,20 @@ std::string Crypto::Encapsulate(
   uint chromosome_num,
   char chromosome_arm,
   double chromosome_region
-)
-{
-  std::string message = "";
-
+  )
+  {
   std::stringstream ss;
 
   ss
+  << "PATIENT INFORMATION"
+  << std::endl
+  << std::endl
   << "First Name: "
   << first_name
   << std::endl
   << "Last Name: "
-  << std::endl
   << last_name
+  << std::endl
   << "Sex: "
   << sex
   << std::endl
@@ -215,6 +241,10 @@ std::string Crypto::Encapsulate(
   << ", "
   << postal_code
   << std::endl
+  << std::endl
+  << "CANCER AND TUMOUR INFORMATION"
+  << std::endl
+  << std::endl
   << "Cancer Type: "
   << cancer_type
   << std::endl
@@ -239,6 +269,10 @@ std::string Crypto::Encapsulate(
   << "Additional Information: "
   << info
   << std::endl
+  << std::endl
+  << "Cancer Stage"
+  << std::endl
+  << std::endl
   << "Primary Tumour: "
   << T
   << std::endl
@@ -248,13 +282,21 @@ std::string Crypto::Encapsulate(
   << "Distant Metastasis: "
   << M
   << std::endl
+  << std::endl
+  << "Cancer Prognosis"
+  << std::endl
+  << std::endl
   << "Life Viability Rate: "
   << rate
   << std::endl
   << "Lifespan Expectancy: "
   << lifespan
   << std::endl
-  << "Biomarker"
+  << std::endl
+  << "Biomedical Testing"
+  << std::endl
+  << std::endl
+  << "Biomarker: "
   << biomarker
   << std::endl
   << "Biomarker Test: "
@@ -262,6 +304,10 @@ std::string Crypto::Encapsulate(
   << std::endl
   << "Biopsy: "
   << biopsy
+  << std::endl
+  << std::endl
+  << "Diagnostic Scanning"
+  << std::endl
   << std::endl
   << "Computerized Tomography Scan Result: "
   << CT
@@ -277,6 +323,10 @@ std::string Crypto::Encapsulate(
   << std::endl
   << "X-Ray Imaging Result: "
   << XRAY
+  << std::endl
+  << std::endl
+  << "Cancer Treatment"
+  << std::endl
   << std::endl
   << "Chemotherapy Report: "
   << chemotherapy
@@ -301,6 +351,10 @@ std::string Crypto::Encapsulate(
   << std::endl
   << "Treatment Report Notes: "
   << treatment_report
+  << std::endl
+  << std::endl
+  << "GENETIC INFORMATION"
+  << std::endl
   << std::endl
   << "Gene Name: "
   << gene_name
@@ -330,32 +384,7 @@ std::string Crypto::Encapsulate(
   << std::endl
   ;
 
-  ss >> message;
-
-  return message;
-}
-
-///////////////////////
-//
-// Data Hash Encryption
-//
-
-std::string Crypto::Hash(std::string data)
-{
-  //////////////////////////
-  // SHA3-256 Hash Algorithm
-
-  SHA3 sha3;
-
-  data = sha3(data);
-  data = sha3(data);
-  data = sha3(data);
-
-  // Hash Hex Signature Prefix
-  data.insert(0, 1, 'x');
-  data.insert(0, 1, '0');
-
-  return data;
+  return ss.str();
 }
 
 #endif

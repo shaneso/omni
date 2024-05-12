@@ -50,10 +50,10 @@ int main()
   // Cryptographic Testing
   Crypto crypto;
 
-  patient.first_name = "Shane";
-  patient.last_name = "So";
+  // patient.first_name = "Shane";
+  // patient.last_name = "So";
 
-  std::string s = crypto.Encapsulate(
+  std::string data = crypto.Encapsulate(
     patient.first_name,
     patient.last_name,
     patient.sex,
@@ -109,10 +109,12 @@ int main()
     locus.chromosome_region
   );
 
-  std::cout << s << std::endl;
-
   // Node Testing
-  // Block node;
+  Node node;
+  node.InsertNode(data);
+  node.InsertNode(data);
+  node.InsertNode(data);
+  node.OutputNode();
 
 
 
@@ -123,6 +125,7 @@ int main()
   // Console Output Functions
   //
 
+  /*
   Console console;
 
   console.Px
@@ -189,6 +192,7 @@ int main()
     locus.chromosome_arm,
     locus.chromosome_region
   );
+  */
 
   return 0;
 }
