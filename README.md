@@ -12,4 +12,12 @@ Using a dynamic linked list structure to build the node ledger, the program crea
 
 ### Health Data
 
-Omni provides information for healthcare professionals such as the cancer type, site of infection, carcinogen, mitotic and Ki-67 indexes, TNM staging, prognosis, biomarkers, scans, treatments, and many more.
+Omni provides information for healthcare professionals such as the cancer type, site of infection, carcinogen, mitotic and Ki-67 indexes, TNM staging, prognosis, biomarkers, scans, treatments, and many more. Additionally, medical research and diagnoses commonly track genomic data. Therefore, Omni also features data templates for gene information such as the type, nucleotide length, cytogenetic coordinates, and gene locus.
+
+___
+
+![](rc/icon.ico)
+
+Omni Beta
+
+Copyright (c) 2024 Shane So
